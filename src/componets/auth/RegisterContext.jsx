@@ -4,12 +4,13 @@ import { useForm } from "react-hook-form";
 import { User, Mail, Lock, ImagePlus, Globe } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { uploadToImgBB } from "@/lib/uploadToImgBB";
 
 const RegisterContext = () => {
   const params = useSearchParams();
   const router = useRouter();
   const callback = params.get("callbackUrl") || "/";
-  console.log(params, router);
+  // console.log(params, router);
 
   const {
     register,
@@ -19,6 +20,10 @@ const RegisterContext = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const image = data.photo[0];
+    const photo = await uploadToImgBB(image);
+    console.log("Image Data:", photo , photo.url);
+
     try {
       // Call register API
       const res = await fetch("/api/register", {
@@ -28,7 +33,7 @@ const RegisterContext = () => {
           name: data.name,
           email: data.email,
           password: data.password,
-          // Handle photo upload separately if needed, for now just passing name/email/pass
+          photo: photo.url || null,
         }),
       });
 
@@ -150,33 +155,34 @@ const RegisterContext = () => {
             <label className="block text-sm font-medium text-amber-100 mb-2">
               Profile Photo
             </label>
+
             <div className="relative">
-              <ImagePlus className="absolute inset-y-0 left-3 top-1/2 transform -translate-y-1/2 text-amber-500 w-5 h-5" />
+              <ImagePlus className="absolute inset-y-0 left-3 top-1/2 -translate-y-1/2 text-amber-500 w-5 h-5" />
+
               <input
                 type="file"
-                accept="image/*"
-                {...register("photo", { required: "Photo is required" })}
-                className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-amber-500/20 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition file:mr-4 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-amber-600 file:text-white file:hover:bg-amber-700 file:cursor-pointer"
+                accept="image/png, image/jpeg, image/jpg, image/webp"
+                {...register("photo", {
+                  required: "Photo is required",
+                  validate: {
+                    isImage: (files) =>
+                      files && files[0] && files[0].type.startsWith("image/")
+                        ? true
+                        : "Only image files are allowed",
+                  },
+                })}
+                className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-amber-500/20 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition
+      file:mr-4 file:py-2 file:px-3 file:rounded-lg file:border-0
+      file:bg-amber-600 file:text-white file:hover:bg-amber-700 file:cursor-pointer"
               />
             </div>
+
             {errors.photo && (
               <p className="text-red-400 text-sm mt-2">
                 {errors.photo.message}
               </p>
             )}
-            {/* {photo && photo.length > 0 && (
-              <div className="mt-3 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg overflow-hidden ring-1 ring-white/10">
-                  <img
-                    src={URL.createObjectURL(photo[0])}
-                    alt="Selected"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="text-xs text-white/80">{photo[0].name}</div>
-              </div>
-            )} */}
-          </div> 
+          </div>
 
           <button
             type="submit"

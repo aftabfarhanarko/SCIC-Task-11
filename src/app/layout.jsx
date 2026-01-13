@@ -2,8 +2,7 @@ import { Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/componets/Navbar";
 import Footer from "@/componets/Footer";
-import NextAuthProvider from "@/provider/NextAuthProvider";
-import { Toaster } from "sonner";
+import AuthProvider from "@/providers/AuthProvider";
 
 const baiJamjuree = Bai_Jamjuree({
   variable: "--font-bai-jamjuree",
@@ -19,21 +18,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <NextAuthProvider>
-      <html lang="en">
-        <body className={`${baiJamjuree.variable}  antialiased`}>
+    <html lang="en">
+      <body className={`${baiJamjuree.variable}  antialiased`}>
+        <AuthProvider>
           <nav>
             {" "}
             <Navbar />
           </nav>
-          <main>
-            {children}
-            <Toaster position="top-right" />
-          </main>
-
+          <main>{children}</main>
           <Footer />
-        </body>
-      </html>
-    </NextAuthProvider>
+        </AuthProvider>
+      </body>
+    </html>
   );
 }

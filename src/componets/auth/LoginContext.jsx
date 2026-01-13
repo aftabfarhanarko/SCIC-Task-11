@@ -6,11 +6,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 const LoginContext = () => {
-    const params = useSearchParams();
+  const params = useSearchParams();
   const router = useRouter();
   const callback = params.get("callbackUrl") || "/";
   console.log(params, router, callback);
-  
+
   const {
     register,
     handleSubmit,

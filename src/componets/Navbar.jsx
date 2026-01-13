@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import AuthButtons from "./AuthButtons/AuthButtons";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,28 +89,7 @@ const Navbar = () => {
 
             {/* Right Side Actions */}
             <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href="/login"
-                className="text-white/90 hover:text-amber-400 px-4 py-2 text-[11px] uppercase tracking-[0.15em] font-medium transition-colors duration-300"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="text-white/90 hover:text-amber-400 px-4 py-2 text-[11px] uppercase tracking-[0.15em] font-medium transition-colors duration-300"
-              >
-                Sign Up
-              </Link>
-
-              <div className="w-[1px] h-5 bg-white/20"></div>
-
-              <Link
-                href="/book"
-                className="relative bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 text-[11px] uppercase tracking-[0.15em] font-semibold transition-all duration-300 overflow-hidden group"
-              >
-                <span className="relative z-10">Reserve Now</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-              </Link>
+              <AuthButtons />
             </div>
 
             {/* Mobile Menu Button */}
