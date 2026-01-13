@@ -1,221 +1,201 @@
 "use client";
-import { useState } from "react";
-import { User, Mail, Phone, CalendarDays, Users, KeyRound } from "lucide-react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { User, Mail, Lock, ImagePlus, Globe } from "lucide-react";
 
-export default function HotelRegistration() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    checkIn: "",
-    checkOut: "",
-    guests: "1",
-    roomType: "standard",
-    specialRequests: "",
-  });
+const RegisterContext = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const photo = watch("photo");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Registration Data:", formData);
-    alert("Registration submitted! Check console for details.");
+  const onSubmit = (data) => {
+    console.log("Register Data:", {
+      ...data,
+      photo: data.photo && data.photo.length ? data.photo[0].name : null,
+    });
+    reset();
   };
 
   const handleGoogleLogin = () => {
-    alert("Google Sign-In would be integrated here");
+    console.log("Google login clicked");
   };
 
   return (
-    <div className="min-h-screen relative">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      />
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 py-12 px-4">
-        <div className="max-w-3xl mx-auto bg-slate-900/80 backdrop-blur rounded-2xl ring-1 ring-white/10 shadow-2xl">
-          <div className="px-8 py-6 border-b border-white/10">
-            <div className="flex items-center gap-3 text-white">
-              <KeyRound className="text-amber-500" />
-              <h1 className="text-3xl font-serif font-bold">Hotel Registration</h1>
-            </div>
-            <p className="text-white/70 mt-2">Book your perfect stay with refined comfort.</p>
-          </div>
-
-          <div className="p-8">
-            <button
-              onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center gap-3 bg-white/10 text-white border border-white/20 rounded-lg px-6 py-3 mb-6 hover:bg-white/15 transition-all"
+    <div className="min-h-screen flex items-center pt-40 justify-center px-4 py-8">
+      <div className="w-full max-w-md bg-slate-900 text-white rounded-2xl ring-1 ring-white/10 shadow-2xl p-8">
+        {/* Header */}
+        <div className="px-8 pt-8 pb-6 text-center">
+          <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <svg
+              className="w-10 h-10 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <span className="text-white font-medium">Continue with Google</span>
-            </button>
-
-            <div className="text-center text-white/60 text-xs tracking-widest mb-6">OR REGISTER MANUALLY</div>
-
-            <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">First Name</label>
-                  <div className="relative">
-                    <User size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">Last Name</label>
-                  <div className="relative">
-                    <User size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">Email Address</label>
-                  <div className="relative">
-                    <Mail size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">Phone Number</label>
-                  <div className="relative">
-                    <Phone size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">Check-In Date</label>
-                  <div className="relative">
-                    <CalendarDays size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                    <input
-                      type="date"
-                      name="checkIn"
-                      value={formData.checkIn}
-                      onChange={handleChange}
-                      className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">Check-Out Date</label>
-                  <div className="relative">
-                    <CalendarDays size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                    <input
-                      type="date"
-                      name="checkOut"
-                      value={formData.checkOut}
-                      onChange={handleChange}
-                      className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">Number of Guests</label>
-                  <div className="relative">
-                    <Users size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
-                    <select
-                      name="guests"
-                      value={formData.guests}
-                      onChange={handleChange}
-                      className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none"
-                    >
-                      <option value="1">1 Guest</option>
-                      <option value="2">2 Guests</option>
-                      <option value="3">3 Guests</option>
-                      <option value="4">4 Guests</option>
-                      <option value="5">5+ Guests</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-white/80 text-sm">Room Type</label>
-                  <select
-                    name="roomType"
-                    value={formData.roomType}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none"
-                  >
-                    <option value="standard">Standard Room</option>
-                    <option value="deluxe">Deluxe Room</option>
-                    <option value="suite">Suite</option>
-                    <option value="penthouse">Penthouse</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="mb-6 space-y-2">
-                <label className="text-white/80 text-sm">Special Requests</label>
-                <textarea
-                  name="specialRequests"
-                  value={formData.specialRequests}
-                  onChange={handleChange}
-                  rows="4"
-                  className="w-full px-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none resize-none"
-                  placeholder="Any special requirements or preferences..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-md transition-all"
-              >
-                Complete Registration
-              </button>
-            </form>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
           </div>
+          <h1 className="text-3xl font-bold  mb-2">Please Sign Up Now</h1>
+          <p className="text-gray-500">Sign Up to continue to your account</p>
         </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <div>
+            <label className="block text-sm font-medium text-amber-100 mb-2">
+              Full Name
+            </label>
+            <div className="relative">
+              <User className="absolute inset-y-0 left-3 top-1/2 transform -translate-y-1/2 text-amber-500 w-5 h-5" />
+              <input
+                type="text"
+                {...register("name", { required: "Name is required" })}
+                className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-amber-500/20 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition"
+                placeholder="John Doe"
+              />
+            </div>
+            {errors.name && (
+              <p className="text-red-400 text-sm mt-2">{errors.name.message}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-amber-100 mb-2">
+              Email Address
+            </label>
+            <div className="relative">
+              <Mail className="absolute inset-y-0 left-3 top-1/2 transform -translate-y-1/2 text-amber-500 w-5 h-5" />
+              <input
+                type="email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Enter a valid email",
+                  },
+                })}
+                className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-amber-500/20 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition"
+                placeholder="you@example.com"
+              />
+            </div>
+            {errors.email && (
+              <p className="text-red-400 text-sm mt-2">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-amber-100 mb-2">
+              Password
+            </label>
+            <div className="relative">
+              <Lock className="absolute inset-y-0 left-3 top-1/2 transform -translate-y-1/2 text-amber-500 w-5 h-5" />
+              <input
+                type="password"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                })}
+                className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-amber-500/20 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition"
+                placeholder="••••••••"
+              />
+            </div>
+            {errors.password && (
+              <p className="text-red-400 text-sm mt-2">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-amber-100 mb-2">
+              Profile Photo
+            </label>
+            <div className="relative">
+              <ImagePlus className="absolute inset-y-0 left-3 top-1/2 transform -translate-y-1/2 text-amber-500 w-5 h-5" />
+              <input
+                type="file"
+                accept="image/*"
+                {...register("photo", { required: "Photo is required" })}
+                className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-amber-500/20 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition file:mr-4 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-amber-600 file:text-white file:hover:bg-amber-700 file:cursor-pointer"
+              />
+            </div>
+            {errors.photo && (
+              <p className="text-red-400 text-sm mt-2">
+                {errors.photo.message}
+              </p>
+            )}
+            {photo && photo.length > 0 && (
+              <div className="mt-3 flex items-center gap-3">
+                <div className="w-12 h-12 rounded-lg overflow-hidden ring-1 ring-white/10">
+                  <img
+                    src={URL.createObjectURL(photo[0])}
+                    alt="Selected"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-xs text-white/80">{photo[0].name}</div>
+              </div>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Sing Up
+          </button>
+        </form>
+
+        <div className="flex items-center my-6">
+          <div className="flex-1 h-px bg-white/10"></div>
+          <span className="px-3 text-sm text-white/60">OR</span>
+          <div className="flex-1 h-px bg-white/10"></div>
+        </div>
+
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-300 rounded-xl px-6 py-3 hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 shadow-sm"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <path
+              fill="#4285F4"
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+            />
+            <path
+              fill="#34A853"
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+            />
+            <path
+              fill="#FBBC05"
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+            />
+            <path
+              fill="#EA4335"
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+            />
+          </svg>
+          <span className="text-gray-700 font-medium">
+            Continue with Google
+          </span>
+        </button>
       </div>
     </div>
   );
-}
+};
+
+export default RegisterContext;
