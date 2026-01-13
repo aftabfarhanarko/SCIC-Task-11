@@ -46,17 +46,15 @@ const AuthButtons = () => {
             <div className="px-5 py-6 bg-gradient-to-br from-amber-400/15 via-amber-500/10 to-transparent border-b border-amber-400/20">
               <div className="flex flex-col items-center text-center">
                 <img
-                  src={
-                    session.data.user.image || "https://github.com/shadcn.png"
-                  }
-                  alt={session.data.user.name || "User"}
+                  src={session?.data?.user?.image}
+                  alt={session?.data?.user?.name || "User"}
                   className="w-20 h-20 rounded-full border-2 border-amber-400 shadow-lg mb-3"
                 />
                 <h3 className="text-white font-semibold text-base mb-1">
-                  {session.data.user.name || "User"}
+                  {session?.data?.user?.name || "User"}
                 </h3>
                 <p className="text-white/60 text-sm truncate w-full px-2">
-                  {session.data.user.email}
+                  {session?.data?.user?.email}
                 </p>
               </div>
             </div>

@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/componets/Navbar";
 import Footer from "@/componets/Footer";
 import AuthProvider from "@/providers/AuthProvider";
+import { Toaster } from 'sonner'
 
 const baiJamjuree = Bai_Jamjuree({
   variable: "--font-bai-jamjuree",
@@ -19,14 +20,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${baiJamjuree.variable}  antialiased`}>
+      <body className={`${baiJamjuree.variable} antialiased`}>
         <AuthProvider>
-          <nav>
-            {" "}
-            <Navbar />
-          </nav>
+          <Navbar />
           <main>{children}</main>
           <Footer />
+
+          {/* ✅ Global Toast */}
+          <Toaster position="top-right" />
         </AuthProvider>
       </body>
     </html>

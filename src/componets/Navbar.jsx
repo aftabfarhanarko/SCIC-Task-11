@@ -168,7 +168,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Contact Info */}
-          <div className="flex flex-col items-center gap-4 mb-8 text-white/70 text-sm">
+          {/* <div className="flex flex-col items-center gap-4 mb-8 text-white/70 text-sm">
             <a
               href="tel:+18881234567"
               className="flex items-center gap-2 hover:text-amber-400 transition-colors"
@@ -183,24 +183,11 @@ const Navbar = () => {
               <Mail size={16} />
               <span>RESERVATIONS@LUXESTAY.COM</span>
             </a>
-          </div>
+          </div> */}
 
           {/* Mobile Auth Buttons */}
           <div className="flex flex-col gap-4 w-full max-w-xs px-6">
-            <a
-              href="/login"
-              onClick={() => setIsOpen(false)}
-              className="border border-white/30 text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-xs uppercase tracking-[0.2em] font-semibold text-center transition-all duration-300"
-            >
-              Sign In
-            </a>
-            <a
-              href="/book"
-              onClick={() => setIsOpen(false)}
-              className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 text-xs uppercase tracking-[0.2em] font-semibold text-center transition-all duration-300"
-            >
-              Reserve Your Stay
-            </a>
+            <AuthButtons />
           </div>
         </div>
       </div>

@@ -5,6 +5,8 @@ import { User, Mail, Lock, ImagePlus, Globe } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { uploadToImgBB } from "@/lib/uploadToImgBB";
+import { postUser } from "@/actions/authJs";
+import { toast } from "sonner";
 
 const RegisterContext = () => {
   const params = useSearchParams();
@@ -22,7 +24,7 @@ const RegisterContext = () => {
   const onSubmit = async (data) => {
     const image = data.photo[0];
     const photo = await uploadToImgBB(image);
-    console.log("Image Data:", photo , photo.url);
+    console.log("Image Data:", photo, photo.url);
 
     try {
       // Call register API
@@ -36,8 +38,21 @@ const RegisterContext = () => {
           photo: photo.url || null,
         }),
       });
+      // postUser
+      const users = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        photo: photo.url,
+      };
+      const resUser = await postUser(users);
+      console.log("Get User Post Insert id", resUser);
+      if (resUser.insertedId) {
+        toast.success("User Created Successfully");
+      }
 
-      if (res.ok) {
+      // res.ok
+      if (resUser.insertedId) {
         // Auto login after register
         await signIn("credentials", {
           email: data.email,
