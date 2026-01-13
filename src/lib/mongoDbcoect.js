@@ -1,6 +1,6 @@
 const uri = `mongodb+srv://${process.env.MONGODB_NAME}:${process.env.MONGODB_PASSWORD}@clustermyfirstmongodbpr.2cecfoe.mongodb.net/?appName=ClusterMyFirstMongoDbProject`;
 const dbname = process.env.MONGODB_NAME;
-export default collections = {
+export const collections = {
   HOTEL: "hoteldata",
   USER: "users",
 };

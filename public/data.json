@@ -1,0 +1,376 @@
+[
+  {
+    "title": "Studio Room for Solo Travel",
+    "description": "A cozy, quiet studio room ideal for solo travelers, located in the heart of Old Town.",
+    "discount": 20,
+    "category": "business",
+    "availability": true,
+    "stock": 10,
+    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 140,
+    "priceCurrency": "USD",
+    "rating": 4.6,
+    "reviews": 276,
+    "saved": 1450,
+    "location": "Old Town, Lisbon",
+    "address": "123 Old Town Street, Lisbon",
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "24/7 Reception",
+      "Breakfast Included"
+    ],
+    "checkIn": "2:00 PM",
+    "checkOut": "11:00 AM",
+    "cancellationPolicy": "Free cancellation within 24 hours of booking",
+    "host": "John Doe",
+    "contact": "+123456789",
+    "reviewsList": [
+      {
+        "user": "Alice",
+        "rating": 5,
+        "comment": "Great stay, very clean and cozy!",
+        "date": "2025-01-10"
+      },
+      {
+        "user": "Bob",
+        "rating": 4,
+        "comment": "Good location but a bit noisy at night.",
+        "date": "2025-01-08"
+      }
+    ],
+    "tags": ["business", "solo travel", "quiet"]
+  },
+  {
+    "title": "Luxury Suite with Sea View",
+    "description": "Enjoy stunning sea views in this luxury suite with all modern amenities.",
+    "discount": 15,
+    "category": "luxury",
+    "availability": true,
+    "stock": 5,
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 350,
+    "priceCurrency": "USD",
+    "rating": 4.9,
+    "reviews": 189,
+    "saved": 980,
+    "location": "Beverly Hills, Los Angeles",
+    "address": "456 Ocean Drive, Beverly Hills",
+    "amenities": ["WiFi", "Pool", "Spa", "Room Service", "Gym"],
+    "checkIn": "3:00 PM",
+    "checkOut": "12:00 PM",
+    "cancellationPolicy": "Non-refundable",
+    "host": "Emma Smith",
+    "contact": "+1987654321",
+    "reviewsList": [
+      {
+        "user": "Charlie",
+        "rating": 5,
+        "comment": "Exceptional service and views!",
+        "date": "2025-01-05"
+      },
+      {
+        "user": "Diana",
+        "rating": 5,
+        "comment": "Will definitely come back.",
+        "date": "2024-12-28"
+      }
+    ],
+    "tags": ["luxury", "sea view", "romantic"]
+  },
+  {
+    "title": "Family Room with Garden Access",
+    "description": "Spacious family room with direct access to the beautiful garden.",
+    "discount": 10,
+    "category": "family",
+    "availability": true,
+    "stock": 8,
+    "image": "https://images.unsplash.com/photo-1494522358652-5a63f0f1e849?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1494522358652-5a63f0f1e849?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1522770179533-24471fcdba45?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 180,
+    "priceCurrency": "USD",
+    "rating": 4.2,
+    "reviews": 98,
+    "saved": 600,
+    "location": "Hyde Park, London",
+    "address": "789 Garden Lane, London",
+    "amenities": ["WiFi", "Breakfast Included", "Parking", "Garden View"],
+    "checkIn": "1:00 PM",
+    "checkOut": "11:00 AM",
+    "cancellationPolicy": "Free cancellation up to 48 hours before check-in",
+    "host": "Mark Johnson",
+    "contact": "+447911123456",
+    "reviewsList": [
+      {
+        "user": "Eva",
+        "rating": 4,
+        "comment": "Perfect for our family trip.",
+        "date": "2025-01-12"
+      },
+      {
+        "user": "Frank",
+        "rating": 4,
+        "comment": "Lovely garden access.",
+        "date": "2024-12-30"
+      }
+    ],
+    "tags": ["family", "garden", "spacious"]
+  },
+  {
+    "title": "Budget Single Room",
+    "description": "Affordable and comfortable single room suitable for budget travelers.",
+    "discount": 5,
+    "category": "budget",
+    "availability": true,
+    "stock": 15,
+    "image": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 60,
+    "priceCurrency": "USD",
+    "rating": 3.8,
+    "reviews": 45,
+    "saved": 300,
+    "location": "Downtown, Bangkok",
+    "address": "101 Budget Street, Bangkok",
+    "amenities": ["WiFi", "24/7 Reception", "Heating"],
+    "checkIn": "2:00 PM",
+    "checkOut": "11:00 AM",
+    "cancellationPolicy": "Free cancellation within 12 hours",
+    "host": "Somsak Lee",
+    "contact": "+6621234567",
+    "reviewsList": [
+      {
+        "user": "George",
+        "rating": 3,
+        "comment": "Basic room, value for money.",
+        "date": "2025-01-02"
+      },
+      {
+        "user": "Hannah",
+        "rating": 4,
+        "comment": "Good for short stay.",
+        "date": "2024-12-25"
+      }
+    ],
+    "tags": ["budget", "single", "affordable"]
+  },
+  {
+    "title": "Double Room with City View",
+    "description": "Comfortable double room offering panoramic views of the city skyline.",
+    "discount": 18,
+    "category": "business",
+    "availability": true,
+    "stock": 7,
+    "image": "https://images.unsplash.com/photo-1472220625704-91e1462799b2?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1472220625704-91e1462799b2?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1494522240187-3b05b8d2cbb9?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 220,
+    "priceCurrency": "USD",
+    "rating": 4.4,
+    "reviews": 134,
+    "saved": 900,
+    "location": "Midtown, New York",
+    "address": "234 City Center, New York",
+    "amenities": ["WiFi", "Air Conditioning", "Breakfast Included", "Gym"],
+    "checkIn": "3:00 PM",
+    "checkOut": "11:00 AM",
+    "cancellationPolicy": "Free cancellation up to 24 hours before check-in",
+    "host": "Laura Martinez",
+    "contact": "+12125552368",
+    "reviewsList": [
+      {
+        "user": "Ian",
+        "rating": 5,
+        "comment": "Lovely room with a great view.",
+        "date": "2025-01-09"
+      },
+      {
+        "user": "Jane",
+        "rating": 4,
+        "comment": "Very comfortable and clean.",
+        "date": "2024-12-27"
+      }
+    ],
+    "tags": ["business", "city view", "double"]
+  },
+  {
+    "title": "Cozy Cabin in the Woods",
+    "description": "Escape to nature with this cozy cabin surrounded by trees.",
+    "discount": 12,
+    "category": "vacation",
+    "availability": true,
+    "stock": 3,
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 120,
+    "priceCurrency": "USD",
+    "rating": 4.7,
+    "reviews": 88,
+    "saved": 720,
+    "location": "Aspen, Colorado",
+    "address": "789 Forest Road, Aspen",
+    "amenities": ["Fireplace", "Kitchen", "WiFi", "Parking"],
+    "checkIn": "4:00 PM",
+    "checkOut": "10:00 AM",
+    "cancellationPolicy": "Free cancellation within 24 hours",
+    "host": "Mike Brown",
+    "contact": "+13035551234",
+    "reviewsList": [
+      {
+        "user": "Kyle",
+        "rating": 5,
+        "comment": "Perfect getaway spot!",
+        "date": "2025-01-07"
+      },
+      {
+        "user": "Laura",
+        "rating": 4,
+        "comment": "Loved the fireplace.",
+        "date": "2024-12-29"
+      }
+    ],
+    "tags": ["vacation", "cabin", "nature"]
+  },
+  {
+    "title": "Penthouse Apartment Downtown",
+    "description": "Modern penthouse apartment in the heart of downtown with skyline views.",
+    "discount": 22,
+    "category": "luxury",
+    "availability": false,
+    "stock": 0,
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 550,
+    "priceCurrency": "USD",
+    "rating": 4.8,
+    "reviews": 210,
+    "saved": 1200,
+    "location": "Downtown, San Francisco",
+    "address": "100 Market Street, San Francisco",
+    "amenities": ["WiFi", "Gym", "Pool", "Elevator"],
+    "checkIn": "3:00 PM",
+    "checkOut": "12:00 PM",
+    "cancellationPolicy": "Non-refundable",
+    "host": "Nina Williams",
+    "contact": "+14155552671",
+    "reviewsList": [
+      {
+        "user": "Matt",
+        "rating": 5,
+        "comment": "Amazing place, will book again.",
+        "date": "2025-01-03"
+      },
+      {
+        "user": "Nora",
+        "rating": 4,
+        "comment": "Loved the location.",
+        "date": "2024-12-20"
+      }
+    ],
+    "tags": ["luxury", "penthouse", "downtown"]
+  },
+  {
+    "title": "Economy Double Room",
+    "description": "Comfortable and affordable double room suitable for couples.",
+    "discount": 8,
+    "category": "budget",
+    "availability": true,
+    "stock": 12,
+    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 90,
+    "priceCurrency": "USD",
+    "rating": 3.9,
+    "reviews": 55,
+    "saved": 400,
+    "location": "Old Town, Prague",
+    "address": "12 Economy Road, Prague",
+    "amenities": ["WiFi", "Heating", "Breakfast Included"],
+    "checkIn": "2:00 PM",
+    "checkOut": "11:00 AM",
+    "cancellationPolicy": "Free cancellation within 24 hours",
+    "host": "Peter Novak",
+    "contact": "+420123456789",
+    "reviewsList": [
+      {
+        "user": "Olivia",
+        "rating": 4,
+        "comment": "Good value for the price.",
+        "date": "2025-01-06"
+      },
+      {
+        "user": "Paul",
+        "rating": 3,
+        "comment": "Basic but clean.",
+        "date": "2024-12-23"
+      }
+    ],
+    "tags": ["budget", "double", "economy"]
+  },
+  {
+    "title": "Beachfront Bungalow",
+    "description": "Relax in this beachfront bungalow with private beach access.",
+    "discount": 25,
+    "category": "vacation",
+    "availability": true,
+    "stock": 4,
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1494522240187-3b05b8d2cbb9?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "priceFrom": 280,
+    "priceCurrency": "USD",
+    "rating": 4.5,
+    "reviews": 150,
+    "saved": 1000,
+    "location": "Malibu, California",
+    "address": "1 Beach Road, Malibu",
+    "amenities": ["WiFi", "Private Beach", "Air Conditioning", "Parking"],
+    "checkIn": "3:00 PM",
+    "checkOut": "12:00 PM",
+    "cancellationPolicy": "Free cancellation up to 48 hours before check-in",
+    "host": "Sarah Connor",
+    "contact": "+13105551234",
+    "reviewsList": [
+      {
+        "user": "Quincy",
+        "rating": 5,
+        "comment": "Amazing location and stay.",
+        "date": "2025-01-11"
+      },
+      {
+        "user": "Rachel",
+        "rating": 4,
+        "comment": "Loved the private beach.",
+        "date": "2024-12-31"
+      }
+    ],
+    "tags": ["vacation", "beachfront", "bungalow"]
+  }
+]
