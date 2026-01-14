@@ -68,7 +68,13 @@ const RegisterContext = () => {
   };
 
   const handleGoogleLogin = () => {
-    signIn("google", { callbackUrl: callback });
+    signIn("google", { callbackUrl: callback })
+    .then(res => {
+      console.log("This is google ", res);
+      
+    })
+
+
   };
 
   return (

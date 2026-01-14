@@ -4,10 +4,10 @@ export async function POST(req) {
   try {
     const body = await req.json();
     console.log("Register API called with:", body);
-     
+
     // Here you would save the user to the database
     // For now, we just return success as requested
-    
+
     return NextResponse.json(
       { message: "User registered successfully", user: body },
       { status: 201 }

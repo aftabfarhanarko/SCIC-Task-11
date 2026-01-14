@@ -27,7 +27,7 @@ export const postUser = async (payload) => {
     email,
     password: await bcrypt.hash(password, 10),
     photo,
-    creatAt: new Date().toISOString(),
+    createdAt: new Date(),
     role: "user",
     provider: "credentials",
   };
