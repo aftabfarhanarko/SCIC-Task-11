@@ -20,6 +20,7 @@ const NewSectionns = () => {
         "https://i.ibb.co.com/yc05tcQ8/image.png",
       href: "/rooms/presidential",
       price: "$899",
+      rating: 5,
     },
     {
       title: "Grand Deluxe",
@@ -28,6 +29,7 @@ const NewSectionns = () => {
         "https://i.ibb.co.com/dwqwNntP/image.png",
       href: "/rooms/grand-deluxe",
       price: "$399",
+      rating: 4.8,
     },
     {
       title: "Ocean View",
@@ -36,6 +38,7 @@ const NewSectionns = () => {
         "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop",
       href: "/rooms/ocean-view",
       price: "$499",
+      rating: 4.9,
     },
   ];
 
@@ -82,10 +85,30 @@ const NewSectionns = () => {
   ];
 
   const attractions = [
-    { title: "Old Town", distance: "1.2 km", href: "/experiences/old-town" },
-    { title: "Art Museum", distance: "800 m", href: "/experiences/museum" },
-    { title: "River Promenade", distance: "500 m", href: "/experiences/promenade" },
-    { title: "Shopping District", distance: "1.5 km", href: "/experiences/shopping" },
+    {
+      title: "Paris",
+      subtitle: "France",
+      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600&auto=format&fit=crop",
+      href: "/destinations/paris",
+    },
+    {
+      title: "Tokyo",
+      subtitle: "Japan",
+      image: "https://images.unsplash.com/photo-1503899036084-7e55386a53b0?q=80&w=1600&auto=format&fit=crop",
+      href: "/destinations/tokyo",
+    },
+    {
+      title: "Dubai",
+      subtitle: "United Arab Emirates",
+      image: "https://images.unsplash.com/photo-1498496294664-d9372eb521f3?q=80&w=1600&auto=format&fit=crop",
+      href: "/destinations/dubai",
+    },
+    {
+      title: "New York",
+      subtitle: "United States",
+      image: "https://images.unsplash.com/photo-1488747279002-c8523379faaa?q=80&w=1600&auto=format&fit=crop",
+      href: "/destinations/new-york",
+    },
   ];
   
   const events = [
@@ -147,6 +170,52 @@ const NewSectionns = () => {
     { perk: "Exclusive dining invites" },
   ];
 
+  const deals = [
+    {
+      title: "Early Bird Escape",
+      desc: "Save 25% when you book 30+ days in advance.",
+      tag: "Limited Time",
+      href: "/offers",
+    },
+    {
+      title: "Stay Longer, Save More",
+      desc: "Stay 4 nights, pay for 3 on select suites.",
+      tag: "Popular",
+      href: "/offers",
+    },
+    {
+      title: "Weekend Getaway",
+      desc: "Complimentary breakfast and late checkout.",
+      tag: "Exclusive",
+      href: "/offers",
+    },
+  ];
+
+  const categories = [
+    { label: "Luxury", desc: "Flagship suites and premium locations." },
+    { label: "Budget", desc: "Smart stays with essential comforts." },
+    { label: "Family", desc: "Spacious rooms and kid-friendly perks." },
+    { label: "Business", desc: "Work-ready desks and fast Wi‑Fi." },
+  ];
+
+  const howItWorks = [
+    {
+      step: "01",
+      title: "Search destinations",
+      desc: "Choose your city, dates, and number of guests.",
+    },
+    {
+      step: "02",
+      title: "Pick your stay",
+      desc: "Compare hotels, room types, and guest reviews.",
+    },
+    {
+      step: "03",
+      title: "Secure your booking",
+      desc: "Confirm details and receive instant confirmation.",
+    },
+  ];
+
   return (
     <div>
       <section className="py-20 bg-white">
@@ -176,7 +245,7 @@ const NewSectionns = () => {
         <div className="container mx-auto max-w-7xl px-6">
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">
-              Featured Rooms
+              Featured Hotels
             </h2>
             <Link href="/rooms" className="text-amber-600 font-semibold">
               View All
@@ -205,9 +274,63 @@ const NewSectionns = () => {
                   </div>
                 </div>
                 <div className="p-5 flex items-center justify-between">
-                  <span className="text-slate-900 font-medium">Explore</span>
-                  <span className="text-amber-600 font-semibold">From {room.price}</span>
+                  <div>
+                    <span className="text-slate-900 font-medium block">
+                      From {room.price}
+                    </span>
+                    <div className="flex items-center gap-1 text-amber-600 text-xs mt-1">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star
+                          key={index}
+                          size={14}
+                          className={
+                            index + 1 <= Math.round(room.rating)
+                              ? "fill-amber-500 text-amber-500"
+                              : "text-slate-300"
+                          }
+                        />
+                      ))}
+                      <span className="text-slate-500 ml-1">
+                        {room.rating.toFixed(1)}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-amber-600 font-semibold text-sm">
+                    View details
+                  </span>
                 </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto max-w-7xl px-6">
+          <div className="flex items-end justify-between mb-8">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">
+              Deals & Offers
+            </h2>
+            <Link href="/offers" className="text-amber-400 font-semibold">
+              View All
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {deals.map((deal) => (
+              <Link
+                key={deal.title}
+                href={deal.href}
+                className="rounded-2xl bg-white/5 border border-white/10 p-6 hover:border-amber-400/60 hover:bg-white/10 transition-all shadow-[0_18px_45px_rgba(15,23,42,0.8)]"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs uppercase tracking-[0.2em] text-amber-400">
+                    {deal.tag}
+                  </span>
+                </div>
+                <h3 className="text-lg font-serif font-semibold text-white mb-2">
+                  {deal.title}
+                </h3>
+                <p className="text-white/75 text-sm">{deal.desc}</p>
               </Link>
             ))}
           </div>
@@ -295,7 +418,7 @@ const NewSectionns = () => {
         <div className="container mx-auto max-w-7xl px-6">
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">
-              Nearby Attractions
+              Popular Destinations
             </h2>
             <Link href="/experiences" className="text-amber-600 font-semibold">
               Explore More
@@ -306,11 +429,22 @@ const NewSectionns = () => {
               <Link
                 key={a.title}
                 href={a.href}
-                className="rounded-xl border border-slate-200 bg-white shadow-sm p-5 hover:shadow-md transition-shadow"
+                className="group rounded-2xl overflow-hidden bg-white shadow-xl ring-1 ring-slate-200 hover:ring-slate-300 transition-all"
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-900 font-medium">{a.title}</span>
-                  <span className="text-slate-500 text-sm">{a.distance}</span>
+                <div className="relative h-56">
+                  <img
+                    src={a.image}
+                    alt={a.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/30 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-white text-lg font-serif font-semibold">
+                      {a.title}
+                    </h3>
+                    <p className="text-white/80 text-sm mt-1">{a.subtitle}</p>
+                  </div>
                 </div>
               </Link>
             ))}
@@ -357,15 +491,26 @@ const NewSectionns = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-4xl font-serif font-bold text-slate-900">Guest Stories</h2>
-            <p className="text-gray-600 mt-4">Authentic reviews from recent stays.</p>
+            <h2 className="text-4xl font-serif font-bold text-slate-900">
+              Customer Reviews
+            </h2>
+            <p className="text-gray-600 mt-4">
+              Authentic ratings and comments from recent stays.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <div key={t.name} className="rounded-2xl bg-white shadow-xl ring-1 ring-slate-200 p-6">
+              <div
+                key={t.name}
+                className="rounded-2xl bg-white shadow-xl ring-1 ring-slate-200 p-6"
+              >
                 <div className="flex items-center gap-2 text-amber-600 mb-3">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} size={18} className="fill-amber-600 text-amber-600" />
+                    <Star
+                      key={i}
+                      size={18}
+                      className="fill-amber-600 text-amber-600"
+                    />
                   ))}
                 </div>
                 <p className="text-slate-700">{t.text}</p>
@@ -407,7 +552,9 @@ const NewSectionns = () => {
               />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">Location & Access</h2>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">
+                Contact & Support
+              </h2>
               <div className="mt-6 space-y-3 text-slate-700">
                 <div className="flex items-start gap-2">
                   <MapPin size={20} className="text-amber-600" />
@@ -415,6 +562,7 @@ const NewSectionns = () => {
                 </div>
                 <div>{location.phone}</div>
                 <div>{location.email}</div>
+                <div>24/7 customer support for bookings and inquiries.</div>
               </div>
               <div className="mt-8 flex gap-4">
                 <Link href="/contact" className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 text-sm font-bold">
@@ -446,6 +594,126 @@ const NewSectionns = () => {
             <Link href="/membership" className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 text-sm font-bold">
               Join Now
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">
+                How It Works
+              </h2>
+              <p className="text-gray-600 mt-4">
+                A simple, clear booking journey from discovery to confirmation.
+              </p>
+            </div>
+            <div className="space-y-4">
+              {howItWorks.map((step) => (
+                <div
+                  key={step.step}
+                  className="flex gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-600 text-white text-sm font-semibold">
+                    {step.step}
+                  </div>
+                  <div>
+                    <h3 className="text-slate-900 font-semibold">{step.title}</h3>
+                    <p className="text-slate-600 text-sm mt-1">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1.5fr] gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">
+                Get the best deals in your inbox
+              </h2>
+              <p className="text-white/70 mt-4">
+                Subscribe to receive member-only offers, flash sales, and travel tips.
+              </p>
+              <form className="mt-6 flex flex-col sm:flex-row gap-3 max-w-md">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 rounded-full px-4 py-3 text-sm bg-white text-slate-900 placeholder-slate-500 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="rounded-full bg-amber-500 hover:bg-amber-600 text-sm font-semibold text-slate-950 px-6 py-3"
+                >
+                  Sign Up
+                </button>
+              </form>
+              <p className="text-xs text-white/60 mt-3">
+                No spam. Unsubscribe anytime.
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white/5 border border-white/15 p-6">
+              <h3 className="text-white font-semibold mb-3">Hotel Categories</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {categories.map((c) => (
+                  <div
+                    key={c.label}
+                    className="rounded-xl bg-slate-950/70 border border-white/10 p-4"
+                  >
+                    <div className="text-amber-400 font-semibold text-sm">
+                      {c.label}
+                    </div>
+                    <p className="text-white/75 text-xs mt-1">{c.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">
+                Book on the go
+              </h2>
+              <p className="text-slate-600 mt-4">
+                Manage your bookings, discover stays, and receive live alerts with our
+                mobile app.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <button className="flex items-center gap-3 rounded-xl bg-black text-white px-5 py-3 text-left">
+                  <div className="text-xs">
+                    <div className="uppercase text-[9px] text-white/70">
+                      Download on the
+                    </div>
+                    <div className="text-sm font-semibold">App Store</div>
+                  </div>
+                </button>
+                <button className="flex items-center gap-3 rounded-xl bg-black text-white px-5 py-3 text-left">
+                  <div className="text-xs">
+                    <div className="uppercase text-[9px] text-white/70">
+                      Get it on
+                    </div>
+                    <div className="text-sm font-semibold">Google Play</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop"
+                alt="Mobile booking"
+                className="w-full h-80 object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>

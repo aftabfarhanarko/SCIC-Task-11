@@ -1,12 +1,23 @@
 "use client";
-import React, { useState } from "react";
-import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import AuthButtons from "./AuthButtons/AuthButtons";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -18,10 +29,25 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Announcement Bar */}
+      <div className="hidden md:block bg-gradient-to-r from-emerald-500 via-emerald-400 to-amber-400 text-slate-950 text-[10px] tracking-[0.25em] uppercase">
+        <div className="max-w-10/12 mx-auto flex items-center justify-between px-4 py-2">
+          <span>New seasonal offers now live</span>
+          <Link
+            href="/offers"
+            className="rounded-full bg-slate-950 text-amber-200 px-4 py-1 text-[10px] tracking-[0.2em]"
+          >
+            View offers
+          </Link>
+        </div>
+      </div>
 
-      {/* Main Navbar */}
-      <header className="fixed w-full z-50 bg-slate-900 py-5 transition-all duration-300">
+      <header
+        className={`fixed w-full z-50 py-5 transition-all duration-300 ${
+          scrolled
+            ? "bg-slate-950/95 backdrop-blur shadow-[0_18px_45px_rgba(15,23,42,0.8)]"
+            : "bg-slate-900"
+        }`}
+      >
         {/* Top Contact Bar - Desktop Only */}
         <div className="hidden lg:block border-b border-white/10">
           <div className=" max-w-10/12 mx-auto lg:px-9 py-3 flex justify-between items-center">
@@ -73,22 +99,39 @@ const Navbar = () => {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="relative px-5 py-2 text-[11px] uppercase tracking-[0.15em] font-medium text-white/90 hover:text-white transition-all duration-300 group"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-amber-400 transition-all duration-300 group-hover:w-3/4 group-hover:left-[12.5%]"></span>
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative px-5 py-2 text-[11px] uppercase tracking-[0.15em] font-medium transition-all duration-300 group ${
+                      isActive
+                        ? "text-amber-300"
+                        : "text-white/90 hover:text-white"
+                    }`}
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute bottom-0 h-[2px] bg-amber-400 transition-all duration-300 ${
+                        isActive
+                          ? "w-3/4 left-[12.5%]"
+                          : "w-0 left-1/2 group-hover:w-3/4 group-hover:left-[12.5%]"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
             </div>
 
-            {/* Right Side Actions */}
             <div className="hidden lg:flex items-center gap-3">
+              <Link
+                href="/offers"
+                className="rounded-full border border-amber-400/60 px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-amber-200 hover:bg-amber-400 hover:text-slate-950 transition-colors duration-300"
+              >
+                Book now
+              </Link>
               <AuthButtons />
             </div>
 
@@ -150,21 +193,27 @@ const Navbar = () => {
             </span>
           </div>
 
-          {/* Navigation Links */}
           <div className="flex flex-col items-center space-y-6 mb-12">
-            {navLinks.map((link, index) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-white text-xl font-light tracking-[0.2em] hover:text-amber-400 transition-all duration-300 transform hover:scale-105"
-                style={{
-                  transitionDelay: isOpen ? `${index * 50}ms` : "0ms",
-                }}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`text-xl font-light tracking-[0.2em] transition-all duration-300 transform hover:scale-105 ${
+                    isActive
+                      ? "text-amber-300"
+                      : "text-white hover:text-amber-400"
+                  }`}
+                  style={{
+                    transitionDelay: isOpen ? `${index * 50}ms` : "0ms",
+                  }}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile Contact Info */}
