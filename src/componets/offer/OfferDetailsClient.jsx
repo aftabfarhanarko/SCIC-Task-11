@@ -15,6 +15,9 @@ import {
   Mail,
   X,
 } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { orderData } from "@/actions/server/getData";
+import { toast } from "sonner";
 
 export default function OfferDetailsClient({ item }) {
   const [roomType, setRoomType] = useState("Standard room");
@@ -23,9 +26,17 @@ export default function OfferDetailsClient({ item }) {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const refrances = useRef(null);
+
+  const session = useSession();
+  //   console.log(session.data.user);
 
   const images = useMemo(() => {
     const list = [];
@@ -71,8 +82,32 @@ export default function OfferDetailsClient({ item }) {
     refrances.current.close();
   };
 
-  const onSubmitBooking = (data) => {
+  const onSubmitBooking = async (data) => {
     console.log("This is Data Form", data);
+    const savedBookData = {
+      checkIn: data.checkIn,
+      checkOut: data.checkOut,
+      customeremail: data.email,
+      firstName: data.firstName,
+      guests: data.guests,
+      phone: data.phone,
+      roomType: data.roomType,
+      rooms: data.rooms,
+      specialRequests: data.specialRequests,
+      roomId: item._id,
+      roomName: item.title,
+      orderTime: new Date().toISOString(),
+    };
+
+    const savedata = await orderData(savedBookData);
+    if (savedata.insertedId) {
+      toast.success("Your Order Has Been Placed Successfully");
+      reset();
+      refrances.current.close();
+    }
+    console.log(savedata);
+
+    console.log("Saved Data From Database", savedBookData);
   };
 
   return (
@@ -588,10 +623,10 @@ export default function OfferDetailsClient({ item }) {
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-      <dialog ref={refrances} className="modal modal-bottom  z-60">
+      <dialog ref={refrances} className="modal modal-bottom z-60">
         <div className="modal-box bg-transparent border-none p-0">
           <motion.div
-            className=" py-10  pt-30 inset-0 z-40  flex justify-center items-center"
+            className="py-10 pt-30 inset-0 z-40 flex justify-center items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -636,26 +671,50 @@ export default function OfferDetailsClient({ item }) {
                       />
                       <input
                         type="text"
-                        {...register("firstName", { required: true })}
-                        className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
+                        {...register("firstName", {
+                          required: "First name is required",
+                        })}
+                        readOnly
+                        defaultValue={session?.data?.user?.name}
+                        className={`w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border ${
+                          errors.firstName
+                            ? "border-red-500"
+                            : "border-white/20"
+                        } focus:outline-none`}
                         placeholder="Enter your first name"
                       />
                     </div>
+                    {errors.firstName && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.firstName.message}
+                      </p>
+                    )}
                   </div>
+
                   <div className="space-y-2">
-                    <label className="text-white/80 text-sm">Last Name</label>
-                    <div className="relative">
-                      <User
-                        size={18}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40"
-                      />
-                      <input
-                        type="text"
-                        {...register("lastName", { required: true })}
-                        className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                        placeholder="Enter your last name"
-                      />
-                    </div>
+                    <label className="text-white/80 text-sm">
+                      Number of rooms
+                    </label>
+                    <input
+                      type="number"
+                      min={1}
+                      {...register("rooms", {
+                        required: "Please enter number of rooms",
+                        min: {
+                          value: 1,
+                          message: "At least 1 room is required",
+                        },
+                      })}
+                      className={`w-full pl-3 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border ${
+                        errors.rooms ? "border-red-500" : "border-white/20"
+                      } focus:outline-none`}
+                      placeholder="Enter number of rooms"
+                    />
+                    {errors.rooms && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.rooms.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -672,12 +731,24 @@ export default function OfferDetailsClient({ item }) {
                       />
                       <input
                         type="email"
-                        {...register("email", { required: true })}
-                        className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
+                        {...register("email", {
+                          required: "Email is required",
+                        })}
+                        readOnly
+                        defaultValue={session?.data?.user?.email}
+                        className={`w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border ${
+                          errors.email ? "border-red-500" : "border-white/20"
+                        } focus:outline-none`}
                         placeholder="you@example.com"
                       />
                     </div>
+                    {errors.email && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
+
                   <div className="space-y-2">
                     <label className="text-white/80 text-sm">
                       Phone Number
@@ -689,11 +760,20 @@ export default function OfferDetailsClient({ item }) {
                       />
                       <input
                         type="tel"
-                        {...register("phone", { required: true })}
-                        className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
+                        {...register("phone", {
+                          required: "Phone number is required",
+                        })}
+                        className={`w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border ${
+                          errors.phone ? "border-red-500" : "border-white/20"
+                        } focus:outline-none`}
                         placeholder="+1 234 567 890"
                       />
                     </div>
+                    {errors.phone && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -710,11 +790,21 @@ export default function OfferDetailsClient({ item }) {
                       />
                       <input
                         type="date"
-                        {...register("checkIn", { required: true })}
-                        className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
+                        {...register("checkIn", {
+                          required: "Check-in date is required",
+                        })}
+                        className={`w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border ${
+                          errors.checkIn ? "border-red-500" : "border-white/20"
+                        } focus:outline-none`}
                       />
                     </div>
+                    {errors.checkIn && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.checkIn.message}
+                      </p>
+                    )}
                   </div>
+
                   <div className="space-y-2">
                     <label className="text-white/80 text-sm">
                       Check-out date
@@ -726,10 +816,19 @@ export default function OfferDetailsClient({ item }) {
                       />
                       <input
                         type="date"
-                        {...register("checkOut", { required: true })}
-                        className="w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
+                        {...register("checkOut", {
+                          required: "Check-out date is required",
+                        })}
+                        className={`w-full pl-9 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border ${
+                          errors.checkOut ? "border-red-500" : "border-white/20"
+                        } focus:outline-none`}
                       />
                     </div>
+                    {errors.checkOut && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.checkOut.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -745,9 +844,14 @@ export default function OfferDetailsClient({ item }) {
                         className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40"
                       />
                       <select
-                        {...register("guests", { required: true })}
-                        className="w-full pl-9 pr-3 py-2 rounded-md    focus:outline-none    border border-slate-700 bg-slate-900/80 px-3  text-sm text-slate-100"
+                        {...register("guests", {
+                          required: "Please select number of guests",
+                        })}
+                        className={`w-full pl-9 pr-3 py-2 rounded-md focus:outline-none border ${
+                          errors.guests ? "border-red-500" : "border-slate-700"
+                        } bg-slate-900/80 px-3 text-sm text-slate-100`}
                       >
+                        <option value="">Select guests</option>
                         <option value="1">1 guest</option>
                         <option value="2">2 guests</option>
                         <option value="3">3 guests</option>
@@ -755,15 +859,27 @@ export default function OfferDetailsClient({ item }) {
                         <option value="5">5+ guests</option>
                       </select>
                     </div>
+                    {errors.guests && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.guests.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-white/80 text-sm">Room type</label>
                     <div className="relative">
                       <select
-                        {...register("roomType", { required: true })}
-                        className="w-full  pr-3 py-2 rounded-md    focus:outline-none    border border-slate-700 bg-slate-900/80 px-3  text-sm text-slate-100"
+                        {...register("roomType", {
+                          required: "Please select room type",
+                        })}
+                        className={`w-full pr-3 py-2 rounded-md focus:outline-none border ${
+                          errors.roomType
+                            ? "border-red-500"
+                            : "border-slate-700"
+                        } bg-slate-900/80 px-3 text-sm text-slate-100`}
                       >
+                        <option value="">Select room type</option>
                         <option value="standard">Standard room</option>
                         <option value="deluxe">Deluxe room</option>
                         <option value="suite">Suite</option>
@@ -771,34 +887,11 @@ export default function OfferDetailsClient({ item }) {
                         <option value="family">Family room</option>
                       </select>
                     </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* New Field: Number of Rooms */}
-                  <div className="space-y-2">
-                    <label className="text-white/80 text-sm">
-                      Number of rooms
-                    </label>
-                    <input
-                      type="number"
-                      min={1}
-                      {...register("rooms", { required: true, min: 1 })}
-                      className="w-full pl-3 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                      placeholder="Enter number of rooms"
-                    />
-                  </div>
-
-                  {/* New Field: Arrival Time */}
-                  <div className="space-y-2">
-                    <label className="text-white/80 text-sm">
-                      Arrival time
-                    </label>
-                    <input
-                      type="time"
-                      {...register("arrivalTime")}
-                      className="w-full pl-3 pr-3 py-2 rounded-md bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none"
-                    />
+                    {errors.roomType && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.roomType.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -827,13 +920,6 @@ export default function OfferDetailsClient({ item }) {
               </form>
             </motion.div>
           </motion.div>
-
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
-            </form>
-          </div>
         </div>
       </dialog>
     </div>
