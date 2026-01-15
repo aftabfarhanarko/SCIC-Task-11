@@ -16,8 +16,7 @@ const NewSectionns = () => {
     {
       title: "Presidential Suite",
       desc: "Private terrace • City panorama",
-      image:
-        "https://i.ibb.co.com/yc05tcQ8/image.png",
+      image: "https://i.ibb.co.com/yc05tcQ8/image.png",
       href: "/rooms/presidential",
       price: "$899",
       rating: 5,
@@ -25,8 +24,7 @@ const NewSectionns = () => {
     {
       title: "Grand Deluxe",
       desc: "King bed • Marble bathroom",
-      image:
-        "https://i.ibb.co.com/dwqwNntP/image.png",
+      image: "https://i.ibb.co.com/dwqwNntP/image.png",
       href: "/rooms/grand-deluxe",
       price: "$399",
       rating: 4.8,
@@ -51,14 +49,12 @@ const NewSectionns = () => {
     },
     {
       title: "Sky Bar",
-      image:
-        "https://i.ibb.co.com/Lz6QvTNh/image.png",
+      image: "https://i.ibb.co.com/Lz6QvTNh/image.png",
       href: "/dining/sky-bar",
     },
     {
       title: "Afternoon Tea",
-      image:
-        "https://i.ibb.co.com/Rkc35HvG/image.png",
+      image: "https://i.ibb.co.com/Rkc35HvG/image.png",
       href: "/dining/afternoon-tea",
     },
   ];
@@ -78,8 +74,7 @@ const NewSectionns = () => {
     },
     {
       title: "Yoga Pavilion",
-      image:
-        "https://i.ibb.co.com/Y42wk81Q/image.png",
+      image: "https://i.ibb.co.com/Y42wk81Q/image.png",
       href: "/wellness/yoga",
     },
   ];
@@ -88,50 +83,57 @@ const NewSectionns = () => {
     {
       title: "Paris",
       subtitle: "France",
-      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600&auto=format&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600&auto=format&fit=crop",
       href: "/destinations/paris",
     },
     {
       title: "Tokyo",
       subtitle: "Japan",
-      image: "https://images.unsplash.com/photo-1503899036084-7e55386a53b0?q=80&w=1600&auto=format&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1503899036084-7e55386a53b0?q=80&w=1600&auto=format&fit=crop",
       href: "/destinations/tokyo",
     },
     {
       title: "Dubai",
       subtitle: "United Arab Emirates",
-      image: "https://images.unsplash.com/photo-1498496294664-d9372eb521f3?q=80&w=1600&auto=format&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1498496294664-d9372eb521f3?q=80&w=1600&auto=format&fit=crop",
       href: "/destinations/dubai",
     },
     {
       title: "New York",
       subtitle: "United States",
-      image: "https://images.unsplash.com/photo-1488747279002-c8523379faaa?q=80&w=1600&auto=format&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1488747279002-c8523379faaa?q=80&w=1600&auto=format&fit=crop",
       href: "/destinations/new-york",
     },
   ];
-  
+
   const events = [
     {
       title: "Grand Ballroom",
       desc: "500 guests • Crystal chandeliers",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop",
       href: "/events/ballroom",
     },
     {
       title: "Executive Boardroom",
       desc: "16 seats • AV suite",
-      image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
       href: "/events/boardroom",
     },
     {
       title: "Garden Terrace",
       desc: "Al fresco • Sunset receptions",
-      image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop",
       href: "/events/terrace",
     },
   ];
-  
+
   const testimonials = [
     {
       name: "Amelia R.",
@@ -149,20 +151,20 @@ const NewSectionns = () => {
       rating: 5,
     },
   ];
-  
+
   const awards = [
     { year: "2025", title: "World Luxury Hotel Awards" },
     { year: "2024", title: "Condé Nast Readers’ Choice" },
     { year: "2024", title: "Michelin Guide – Dining" },
   ];
-  
+
   const location = {
     address: "12 Regent Avenue, City Center, 10010",
     phone: "+1 (888) 123-4567",
     email: "reservations@luxestay.com",
     mapImage: "https://i.ibb.co.com/Z46Qng8/image.png",
   };
-  
+
   const membership = [
     { perk: "Members-only rates" },
     { perk: "Late checkout" },
@@ -377,7 +379,9 @@ const NewSectionns = () => {
       <section className="py-20 bg-slate-900">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-4xl font-serif font-bold text-white">Spa & Wellness</h2>
+            <h2 className="text-4xl font-serif font-bold text-white">
+              Spa & Wellness
+            </h2>
             <p className="text-white/70 mt-4">
               Restorative rituals and tranquil spaces for inner balance.
             </p>
@@ -407,7 +411,10 @@ const NewSectionns = () => {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/spa" className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 text-sm font-bold">
+            <Link
+              href="/spa"
+              className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 text-sm font-bold"
+            >
               View Treatments
             </Link>
           </div>
@@ -451,7 +458,7 @@ const NewSectionns = () => {
           </div>
         </div>
       </section>
-      
+
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="flex items-end justify-between mb-8">
@@ -478,7 +485,9 @@ const NewSectionns = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white text-lg font-serif font-semibold">{e.title}</h3>
+                    <h3 className="text-white text-lg font-serif font-semibold">
+                      {e.title}
+                    </h3>
                     <p className="text-white/80 text-sm mt-1">{e.desc}</p>
                   </div>
                 </div>
@@ -487,7 +496,7 @@ const NewSectionns = () => {
           </div>
         </div>
       </section>
-      
+
       <section className="py-20 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -520,18 +529,23 @@ const NewSectionns = () => {
           </div>
         </div>
       </section>
-      
+
       <section className="py-20 bg-slate-900">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="flex items-end justify-between mb-8">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">Awards & Recognition</h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">
+              Awards & Recognition
+            </h2>
             <Link href="/awards" className="text-amber-500 font-semibold">
               View All
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {awards.map((a) => (
-              <div key={a.title} className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+              <div
+                key={a.title}
+                className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6"
+              >
                 <div className="text-amber-500 text-sm">{a.year}</div>
                 <div className="text-white mt-2 font-medium">{a.title}</div>
               </div>
@@ -539,7 +553,7 @@ const NewSectionns = () => {
           </div>
         </div>
       </section>
-      
+
       <section className="py-20 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -565,10 +579,16 @@ const NewSectionns = () => {
                 <div>24/7 customer support for bookings and inquiries.</div>
               </div>
               <div className="mt-8 flex gap-4">
-                <Link href="/contact" className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 text-sm font-bold">
+                <Link
+                  href="/contact"
+                  className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 text-sm font-bold"
+                >
                   Contact Us
                 </Link>
-                <Link href="https://maps.google.com" className="border border-slate-300 hover:border-slate-400 text-slate-900 px-6 py-3 text-sm font-bold">
+                <Link
+                  href="https://maps.google.com"
+                  className="border border-slate-300 hover:border-slate-400 text-slate-900 px-6 py-3 text-sm font-bold"
+                >
                   Get Directions
                 </Link>
               </div>
@@ -576,22 +596,32 @@ const NewSectionns = () => {
           </div>
         </div>
       </section>
-      
+
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <h2 className="text-4xl font-serif font-bold text-slate-900">Membership & Privileges</h2>
-            <p className="text-gray-600 mt-4">Unlock exclusive benefits and personalized experiences.</p>
+            <h2 className="text-4xl font-serif font-bold text-slate-900">
+              Membership & Privileges
+            </h2>
+            <p className="text-gray-600 mt-4">
+              Unlock exclusive benefits and personalized experiences.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {membership.map((m) => (
-              <div key={m.perk} className="rounded-xl border border-slate-200 bg-white shadow-sm p-5 text-center">
+              <div
+                key={m.perk}
+                className="rounded-xl border border-slate-200 bg-white shadow-sm p-5 text-center"
+              >
                 <span className="text-slate-900 font-medium">{m.perk}</span>
               </div>
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/membership" className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 text-sm font-bold">
+            <Link
+              href="/membership"
+              className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 text-sm font-bold"
+            >
               Join Now
             </Link>
           </div>
@@ -619,7 +649,9 @@ const NewSectionns = () => {
                     {step.step}
                   </div>
                   <div>
-                    <h3 className="text-slate-900 font-semibold">{step.title}</h3>
+                    <h3 className="text-slate-900 font-semibold">
+                      {step.title}
+                    </h3>
                     <p className="text-slate-600 text-sm mt-1">{step.desc}</p>
                   </div>
                 </div>
@@ -637,7 +669,8 @@ const NewSectionns = () => {
                 Get the best deals in your inbox
               </h2>
               <p className="text-white/70 mt-4">
-                Subscribe to receive member-only offers, flash sales, and travel tips.
+                Subscribe to receive member-only offers, flash sales, and travel
+                tips.
               </p>
               <form className="mt-6 flex flex-col sm:flex-row gap-3 max-w-md">
                 <input
@@ -657,7 +690,9 @@ const NewSectionns = () => {
               </p>
             </div>
             <div className="rounded-2xl bg-white/5 border border-white/15 p-6">
-              <h3 className="text-white font-semibold mb-3">Hotel Categories</h3>
+              <h3 className="text-white font-semibold mb-3">
+                Hotel Categories
+              </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {categories.map((c) => (
                   <div
@@ -684,8 +719,8 @@ const NewSectionns = () => {
                 Book on the go
               </h2>
               <p className="text-slate-600 mt-4">
-                Manage your bookings, discover stays, and receive live alerts with our
-                mobile app.
+                Manage your bookings, discover stays, and receive live alerts
+                with our mobile app.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <button className="flex items-center gap-3 rounded-xl bg-black text-white px-5 py-3 text-left">

@@ -1,17 +1,8 @@
 "use client";
-import React, { useState } from "react";
-import { Star, Send } from "lucide-react";
+import React from "react";
+import { Star, MapPin, Phone, Mail } from "lucide-react";
 
 const ContentFeedback = () => {
-  const [rating, setRating] = useState(5);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [hoveredStar, setHoveredStar] = useState(0);
-
   const testimonials = [
     {
       name: "Amelia R.",
@@ -25,25 +16,6 @@ const ContentFeedback = () => {
       rating: 5,
     },
   ];
-
-  const handleChange = (e) => {
-    setForm((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Feedback submitted:", { ...form, rating });
-
-    setSubmitted(true);
-    setTimeout(() => {
-      setForm({ name: "", email: "", message: "" });
-      setRating(5);
-      setSubmitted(false);
-    }, 3000);
-  };
 
   return (
     <section className="bg-white text-gray-900 py-20 relative overflow-hidden">
@@ -98,7 +70,6 @@ const ContentFeedback = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left - Reviews */}
           <div>
             <div className="mb-6">
               <h3 className="text-sm tracking-[0.35em] uppercase text-amber-500">
@@ -150,109 +121,69 @@ const ContentFeedback = () => {
             </div>
           </div>
 
-          {/* Right - Form */}
           <div>
             <div className="mb-6">
               <h3 className="text-sm tracking-[0.35em] uppercase text-amber-500">
-                Share Your Experience
+                Hotel Support & Contact
               </h3>
             </div>
 
             <div className="rounded-2xl bg-gray-50 border border-gray-200 p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Full Name"
-                  className="rounded-md bg-white text-gray-900 placeholder-gray-400 border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                />
-                <input
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Email Address"
-                  className="rounded-md bg-white text-gray-900 placeholder-gray-400 border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                />
-              </div>
-
-              <div className="mt-4">
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Your feedback..."
-                  rows={5}
-                  className="w-full rounded-md bg-white text-gray-900 placeholder-gray-400 border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
-                />
-              </div>
-
-              <div className="mt-5">
-                <div className="text-gray-700 text-sm mb-2 font-medium">
-                  Your Rating
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900">
+                    Stay support
+                  </h4>
+                  <p className="text-gray-600 text-sm mt-2">
+                    Need help with a reservation, early check-in, or late
+                    checkout? Our team is available 24/7 to support your stay.
+                  </p>
                 </div>
-                <div className="flex items-center gap-1">
-                  {Array(5)
-                    .fill(0)
-                    .map((_, i) => {
-                      const value = i + 1;
-                      const isActive = value <= (hoveredStar || rating);
-
-                      return (
-                        <button
-                          key={value}
-                          type="button"
-                          onClick={() => setRating(value)}
-                          onMouseEnter={() => setHoveredStar(value)}
-                          onMouseLeave={() => setHoveredStar(0)}
-                          className={`transition-all transform hover:scale-110 ${
-                            isActive
-                              ? "text-amber-500"
-                              : "text-gray-300 hover:text-gray-400"
-                          }`}
-                          aria-label={`Rate ${value} star`}
-                        >
-                          <Star
-                            size={28}
-                            className={isActive ? "fill-amber-500" : ""}
-                          />
-                        </button>
-                      );
-                    })}
-                  <span className="ml-3 text-gray-600 text-sm">
-                    {rating} out of 5
-                  </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="rounded-xl bg-white border border-gray-200 p-4 flex flex-col gap-2">
+                    <div className="flex items-center gap-2 text-amber-600">
+                      <Phone size={18} />
+                      <span className="text-xs uppercase tracking-[0.25em]">
+                        Front desk
+                      </span>
+                    </div>
+                    <div className="text-gray-900 font-semibold">
+                      +1 (888) 123-4567
+                    </div>
+                    <p className="text-gray-500 text-xs">
+                      24/7 for in-house guests and arrivals.
+                    </p>
+                  </div>
+                  <div className="rounded-xl bg-white border border-gray-200 p-4 flex flex-col gap-2">
+                    <div className="flex items-center gap-2 text-amber-600">
+                      <Mail size={18} />
+                      <span className="text-xs uppercase tracking-[0.25em]">
+                        Reservations
+                      </span>
+                    </div>
+                    <div className="text-gray-900 font-semibold">
+                      reservations@luxestay.com
+                    </div>
+                    <p className="text-gray-500 text-xs">
+                      For booking changes and special requests.
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              {submitted && (
-                <div className="mt-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-700 text-sm flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Thank you! Your feedback has been submitted successfully.
+                <div className="rounded-xl bg-white border border-gray-200 p-4 flex gap-3">
+                  <MapPin size={20} className="text-amber-600 mt-1" />
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900">
+                      Guest Relations Desk
+                    </h4>
+                    <p className="text-gray-600 text-sm mt-1">
+                      Visit the lobby guest relations desk for on-property
+                      assistance, experiences, and restaurant recommendations.
+                    </p>
+                  </div>
                 </div>
-              )}
-
-              <div className="mt-8 flex items-center gap-4 flex-wrap">
-                <button
-                  onClick={handleSubmit}
-                  className="bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white px-6 py-3 text-sm font-semibold rounded-md inline-flex items-center gap-2 transition-colors"
-                >
-                  <Send size={18} />
-                  Submit Feedback
-                </button>
-                <div className="text-gray-500 text-sm">
-                  We truly value your experience.
+                <div className="border-t border-gray-200 pt-4 text-xs text-gray-500">
+                  For urgent support during your stay, please contact the front
+                  desk directly by phone from your room handset.
                 </div>
               </div>
             </div>
