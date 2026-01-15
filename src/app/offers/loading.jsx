@@ -30,14 +30,48 @@ const SkeletonCard = () => {
 
 const Cardloading = () => {
   return (
-    <div className="min-h-screen pt-32 pb-20">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
-          <div className="h-6 w-48 bg-slate-200 rounded-md animate-pulse" />
-          <div className="h-9 w-40 bg-slate-200 rounded-lg animate-pulse" />
+    <div className="min-h-screen bg-white">
+      <div className="relative text-white overflow-hidden bg-slate-950">
+        <div className="h-[320px] md:h-[400px] w-full">
+          <div className="absolute inset-0 bg-slate-900" />
+          <div className="relative container mx-auto px-4 py-16">
+            <div className="max-w-3xl mx-auto space-y-6">
+              <div className="h-10 w-56 bg-white/30 rounded-full animate-pulse" />
+              <div className="space-y-4">
+                <div className="h-10 w-64 bg-white/40 rounded-md animate-pulse" />
+                <div className="h-10 w-80 bg-white/30 rounded-md animate-pulse" />
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <div className="h-16 w-32 bg-white/15 rounded-2xl animate-pulse" />
+                <div className="h-16 w-32 bg-white/15 rounded-2xl animate-pulse" />
+                <div className="h-16 w-32 bg-white/15 rounded-2xl animate-pulse" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="max-w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10 my-10">
+
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div className="h-12 w-full max-w-md bg-gray-200 rounded-xl animate-pulse" />
+            <div className="flex gap-3 w-full md:w-auto">
+              <div className="h-12 flex-1 md:w-40 bg-gray-200 rounded-xl animate-pulse" />
+              <div className="h-12 flex-1 md:w-36 bg-gray-200 rounded-xl animate-pulse" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="flex items-center justify-between mb-6">
+          <div className="h-8 w-56 bg-gray-200 rounded-md animate-pulse" />
+          <div className="h-10 w-40 bg-gray-200 rounded-lg animate-pulse" />
+        </div>
+        <div className="h-6 w-44 bg-gray-200 rounded-md animate-pulse" />
+      </div>
+
+      <div className="max-w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10 px-4 pb-16">
         {Array.from({ length: 8 }).map((_, index) => (
           <SkeletonCard key={index} />
         ))}
