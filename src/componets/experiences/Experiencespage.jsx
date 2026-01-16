@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Bath,
   UtensilsCrossed,
@@ -22,39 +22,77 @@ const highlightFeatures = [
     title: "Signature Spa Journey",
     desc: "90-minute personalized rituals",
     Icon: Bath,
+    category: "wellness",
+    tag: "Wellness & Spa",
+    duration: "90 min",
   },
   {
     title: "Chef’s Table Experience",
     desc: "8-course seasonal tasting menu",
     Icon: UtensilsCrossed,
+    category: "culinary",
+    tag: "Culinary",
+    duration: "Evening",
   },
   {
     title: "Rooftop Sunset Lounge",
     desc: "Champagne & panoramic golden hour",
     Icon: Sun,
+    category: "rooftop",
+    tag: "Sunset Lounge",
+    duration: "Golden hour",
   },
   {
     title: "Private Mixology",
     desc: "Craft signature cocktails with our bartender",
     Icon: Wine,
+    category: "culinary",
+    tag: "Mixology",
+    duration: "60 min",
   },
   {
     title: "Curated City Journeys",
     desc: "Exclusive local insider experiences",
     Icon: Bike,
+    category: "explore",
+    tag: "City Discovery",
+    duration: "Half day",
   },
   {
     title: "Wellness Sanctuary",
     desc: "Yoga, sound healing & private training",
     Icon: Dumbbell,
+    category: "wellness",
+    tag: "Mind & Body",
+    duration: "Morning & evening",
   },
 ];
 
+const experienceCategories = [
+  { key: "all", label: "All", Icon: Star },
+  { key: "wellness", label: "Wellness", Icon: Bath },
+  { key: "culinary", label: "Culinary", Icon: UtensilsCrossed },
+  { key: "rooftop", label: "Rooftop", Icon: Sun },
+  { key: "explore", label: "Explore City", Icon: Bike },
+];
+
+const categoryDescriptions = {
+  all: "Preview our most-loved experiences across spa, dining and city discovery.",
+  wellness:
+    "Slow down with immersive spa rituals, yoga sessions and mindful movement.",
+  culinary:
+    "Follow the flavors from chef’s table to rooftop cocktails and late-night bites.",
+  rooftop:
+    "Chase golden-hour light, skyline views and live music above the city.",
+  explore:
+    "Head out with concierge-curated city journeys and local insider access.",
+};
+
 const keyHighlights = [
-  { value: "4.9/5", label: "Guest Experience Rating" },
-  { value: "200+", label: "Curated Experiences" },
-  { value: "24/7", label: "Personal Concierge" },
-  { value: "Carbon Neutral", label: "Since 2024" },
+  { value: "4.9/5", label: "Guest Experience Rating", Icon: Star },
+  { value: "200+", label: "Curated Experiences", Icon: Calendar },
+  { value: "24/7", label: "Personal Concierge", Icon: Users },
+  { value: "Carbon Neutral", label: "Since 2024", Icon: Leaf },
 ];
 
 const testimonials = [
@@ -87,23 +125,106 @@ const quickFacts = [
   },
 ];
 
+const experienceThemes = [
+  {
+    title: "Wellness Escape",
+    desc: "Morning yoga, spa rituals and calming in-suite moments.",
+    image:
+      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80",
+    tag: "Slow & Restful",
+    time: "Ideal for 1–2 days",
+    Icon: Bath,
+  },
+  {
+    title: "Culinary Journey",
+    desc: "Chef-driven tasting menus, rooftop cocktails and late-night bites.",
+    image:
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
+    tag: "Taste & Indulge",
+    time: "Evening into night",
+    Icon: UtensilsCrossed,
+  },
+  {
+    title: "City & Rooftop Nights",
+    desc: "Golden-hour views, live music and curated city adventures.",
+    image:
+      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+    tag: "Explore & Celebrate",
+    time: "From sunset onward",
+    Icon: Music,
+  },
+];
+
 const ExperiencesPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const filteredHighlights =
+    selectedCategory === "all"
+      ? highlightFeatures
+      : highlightFeatures.filter((item) => item.category === selectedCategory);
+
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-5 pt-20 pb-16 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-          Curated Experiences
-        </h1>
-        <p className="mt-5 text-xl text-amber-700 max-w-2xl mx-auto">
-          Moments of refined luxury, authentic discovery, and deep relaxation
-        </p>
+      {/* Hero Section with background image */}
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://i.ibb.co.com/rR6y9LgS/image.png')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-white" />
+
+        <div className="relative max-w-6xl mx-auto px-5 pt-24 pb-16 text-center text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            Curated Experiences
+          </h1>
+          <p className="mt-5 text-xl text-amber-100 max-w-2xl mx-auto">
+            Moments of refined luxury, authentic discovery, and deep relaxation
+          </p>
+          <div className="mt-7 flex flex-col items-center gap-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs font-semibold text-amber-100 border border-white/20">
+              <Calendar className="w-3.5 h-3.5" />
+              <span>Choose your experience focus</span>
+            </div>
+            <div className="flex w-full max-w-3xl gap-3 overflow-x-auto pb-1 justify-center">
+              {experienceCategories.map((cat) => (
+                <button
+                  key={cat.key}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat.key)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold border transition-all whitespace-nowrap ${
+                    selectedCategory === cat.key
+                      ? "bg-amber-500 text-slate-950 border-amber-300 shadow-md shadow-amber-300/40"
+                      : "bg-white/5 text-amber-50 border-white/20 hover:bg-white/10"
+                  }`}
+                >
+                  <cat.Icon className="w-3.5 h-3.5" />
+                  <span>{cat.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Main Highlight Features - Most important part */}
       <section className="max-w-6xl mx-auto px-5 pb-20">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-semibold">
+              Signature Collections
+            </h2>
+            <p className="mt-1 text-sm text-slate-500 max-w-xl">
+              {categoryDescriptions[selectedCategory]}
+            </p>
+          </div>
+          <p className="text-xs md:text-sm text-slate-500">
+            Showing {filteredHighlights.length} curated experiences
+          </p>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {highlightFeatures.map((item, i) => (
+          {filteredHighlights.map((item, i) => (
             <div
               key={i}
               className="group bg-white rounded-2xl border border-amber-100/60 p-7 hover:border-amber-300 transition-all duration-300 hover:shadow-xl"
@@ -112,19 +233,76 @@ const ExperiencesPage = () => {
                 className="w-9 h-9 text-amber-600 mb-5"
                 strokeWidth={1.8}
               />
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p className="text-slate-600">{item.desc}</p>
+              <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
+              <p className="text-slate-600 text-sm mb-4">{item.desc}</p>
+              <div className="flex items-center justify-between text-xs">
+                <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-amber-800 font-medium">
+                  <Star className="w-3.5 h-3.5" />
+                  {item.tag}
+                </span>
+                <span className="text-amber-600 font-semibold">
+                  {item.duration}
+                </span>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Key Numbers */}
+      <section className="max-w-6xl mx-auto px-5 pb-20">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-semibold">
+              Experience Themes
+            </h2>
+            <p className="mt-1 text-sm md:text-base text-slate-600 max-w-xl">
+              Choose an energy for your stay, from deep rest to celebration
+              under the city lights.
+            </p>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {experienceThemes.map((theme, i) => (
+            <div
+              key={i}
+              className="relative rounded-2xl overflow-hidden border border-amber-50 shadow-sm group"
+            >
+              <div className="absolute inset-0">
+                <img
+                  src={theme.image}
+                  alt={theme.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/40 to-transparent" />
+              </div>
+              <div className="relative z-10 p-6 flex flex-col justify-between h-full min-h-[220px]">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-amber-50 border border-white/20">
+                    <theme.Icon className="w-4 h-4" />
+                    <span>{theme.tag}</span>
+                  </span>
+                  <span className="text-[11px] text-amber-100 font-medium">
+                    {theme.time}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">
+                    {theme.title}
+                  </h3>
+                  <p className="text-sm text-amber-50/90">{theme.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="bg-amber-50/40 py-16">
         <div className="max-w-6xl mx-auto px-5">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {keyHighlights.map((stat, i) => (
               <div key={i}>
+                <stat.Icon className="w-6 h-6 text-amber-600 mx-auto mb-3" />
                 <div className="text-4xl md:text-5xl font-bold text-amber-700 mb-2">
                   {stat.value}
                 </div>
@@ -186,7 +364,9 @@ const ExperiencesPage = () => {
               key={i}
               className="bg-white rounded-2xl p-8 border border-amber-50 shadow-sm"
             >
-              <p className="text-lg italic text-slate-700 mb-6">"{t.quote}"</p>
+              <p className="text-lg italic text-slate-700 mb-6">
+                &quot;{t.quote}&quot;
+              </p>
               <div>
                 <p className="font-semibold">{t.name}</p>
                 <p className="text-sm text-slate-500">{t.location}</p>

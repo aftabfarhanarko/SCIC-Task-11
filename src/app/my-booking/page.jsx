@@ -7,7 +7,7 @@ const My_bookingpage = async () => {
   console.log("User Data", data);
 
   return (
-    <div className="min-h-screen bg-white pt-40 pb-12">
+    <div className="min-h-screen bg-white pt-20 md:pt-30 pb-12">
       <BookigData data={data} />
     </div>
   );
