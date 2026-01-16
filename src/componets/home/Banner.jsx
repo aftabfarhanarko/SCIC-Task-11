@@ -1,20 +1,43 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+
+const bannerImages = [
+  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1400&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1501117716987-c8e1ecb2108a?q=80&w=2070&auto=format&fit=crop",
+];
 
 const Banner = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (bannerImages.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % bannerImages.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop')",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 z-0">
+          {bannerImages.map((src, index) => (
+            <div
+              key={src}
+              className={`absolute inset-0 bg-center bg-cover transition-opacity duration-700 ${
+                index === activeIndex ? "opacity-100" : "opacity-0"
+              }`}
+              style={{
+                backgroundImage: `url('${src}')`,
+              }}
+            >
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+          ))}
         </div>
 
         {/* Hero Content */}

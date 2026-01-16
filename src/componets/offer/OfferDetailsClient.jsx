@@ -154,7 +154,7 @@ export default function OfferDetailsClient({ item }) {
           transition={{ delay: 0.1, duration: 0.55 }}
         >
           <p className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.3em] uppercase ">
-            <span className="h-px w-6 bg-emerald-300/60" />
+            <span className="h-px w-6 bg-amber-400/60" />
             Premium stay
           </p>
           <h1 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold ">
@@ -162,7 +162,7 @@ export default function OfferDetailsClient({ item }) {
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
             <span className="inline-flex items-center gap-2 rounded-full bg-slate-900/80 px-3 py-1">
-              <MapPin className="w-4 h-4 text-emerald-300" />
+              <MapPin className="w-4 h-4 text-amber-400" />
               <span className="text-slate-100">{item.location}</span>
             </span>
             {item.address && (
@@ -172,7 +172,7 @@ export default function OfferDetailsClient({ item }) {
               </span>
             )}
             {item.category && (
-              <span className="inline-flex items-center rounded-full bg-emerald-400/10 text-emerald-300 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]">
+              <span className="inline-flex items-center rounded-full bg-amber-400/10 text-amber-400 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]">
                 {item.category}
               </span>
             )}
@@ -180,7 +180,7 @@ export default function OfferDetailsClient({ item }) {
               <span
                 className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold ${
                   item.availability
-                    ? "bg-emerald-500/10 text-emerald-300"
+                    ? "bg-amber-500/10 text-amber-400"
                     : "bg-slate-700/40 text-slate-300"
                 }`}
               >
@@ -219,7 +219,7 @@ export default function OfferDetailsClient({ item }) {
                 />
                 {typeof item.discount === "number" && item.discount > 0 && (
                   <motion.div
-                    className="absolute top-4 left-4 rounded-full bg-emerald-500/95 text-white px-4 py-1 text-xs font-semibold shadow-lg shadow-emerald-500/40"
+                    className="absolute top-4 left-4 rounded-full bg-amber-500/95 text-white px-4 py-1 text-xs font-semibold shadow-lg shadow-amber-500/40"
                     initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.25, duration: 0.4 }}
@@ -252,7 +252,7 @@ export default function OfferDetailsClient({ item }) {
                       type="button"
                       className={`overflow-hidden rounded-2xl border bg-slate-800/90 cursor-pointer transition-all ${
                         index === activeImageIndex
-                          ? "border-emerald-400 ring-2 ring-emerald-400/40 shadow-[0_18px_40px_rgba(16,185,129,0.45)]"
+                          ? "border-amber-400 ring-2 ring-amber-400/40 shadow-[0_18px_40px_rgba(245,158,11,0.45)]"
                           : "border-slate-700 hover:border-slate-400/80 hover:shadow-[0_16px_35px_rgba(15,23,42,0.55)]"
                       }`}
                       onClick={() => setActiveImageIndex(index)}
@@ -316,11 +316,11 @@ export default function OfferDetailsClient({ item }) {
                 </p>
                 <div className="flex flex-col gap-1 text-sm text-slate-100">
                   <span className="flex items=center gap-2">
-                    <CalendarDays className="w-4 h-4 text-emerald-300" />
+                    <CalendarDays className="w-4 h-4 text-amber-400" />
                     <span>Check-in {item.checkIn}</span>
                   </span>
                   <span className="flex items=center gap-2">
-                    <CalendarDays className="w-4 h-4 text-emerald-300" />
+                    <CalendarDays className="w-4 h-4 text-amber-400" />
                     <span>Check-out {item.checkOut}</span>
                   </span>
                 </div>
@@ -334,7 +334,7 @@ export default function OfferDetailsClient({ item }) {
                   Location
                 </p>
                 <div className="flex items-center gap-2 text-sm text-slate-100">
-                  <MapPin className="w-4 h-4 text-emerald-300" />
+                  <MapPin className="w-4 h-4 text-amber-400" />
                   <span>{item.location}</span>
                 </div>
                 {item.address && (
@@ -350,12 +350,12 @@ export default function OfferDetailsClient({ item }) {
                   Host and policy
                 </p>
                 <div className="flex items-center gap-2 text-sm text-slate-100">
-                  <User className="w-4 h-4 text-emerald-300" />
+                  <User className="w-4 h-4 text-amber-400" />
                   <span>{item.host}</span>
                 </div>
-                {item.contact && (
-                  <div className="flex items-center gap-2 text-xs text-slate-300">
-                    <Phone className="w-4 h-4 text-emerald-300" />
+                  {item.contact && (
+                    <div className="flex items-center gap-2 text-xs text-slate-300">
+                      <Phone className="w-4 h-4 text-amber-400" />
                     <span>{item.contact}</span>
                   </div>
                 )}
@@ -390,7 +390,7 @@ export default function OfferDetailsClient({ item }) {
                       whileHover={{ y: -2, scale: 1.01 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <CheckCircle className="w-4 h-4 text-emerald-300" />
+                      <CheckCircle className="w-4 h-4 text-amber-400" />
                       <span>{amenity}</span>
                     </motion.div>
                   ))}
@@ -418,7 +418,7 @@ export default function OfferDetailsClient({ item }) {
                     {item.priceCurrency} {nightlyPrice}
                   </div>
                   {typeof item.discount === "number" && item.discount > 0 && (
-                    <span className="px-3 py-1 rounded-full bg-emerald-400/10 text-xs font-semibold text-emerald-300 border border-emerald-400/50">
+                    <span className="px-3 py-1 rounded-full bg-amber-400/10 text-xs font-semibold text-amber-400 border border-amber-400/50">
                       {item.discount}% off
                     </span>
                   )}
@@ -442,7 +442,7 @@ export default function OfferDetailsClient({ item }) {
                 <div className="space-y-1">
                   <p className="font-semibold text-slate-200">Check-in date</p>
                   <div className="flex items-center gap-2 text-slate-300">
-                    <CalendarDays className="w-4 h-4 text-emerald-300" />
+                    <CalendarDays className="w-4 h-4 text-amber-400" />
                     <input
                       type="date"
                       value={checkInDate}
@@ -454,7 +454,7 @@ export default function OfferDetailsClient({ item }) {
                 <div className="space-y-1">
                   <p className="font-semibold text-slate-200">Check-out date</p>
                   <div className="flex items-center gap-2 text-slate-300">
-                    <CalendarDays className="w-4 h-4 text-emerald-300" />
+                    <CalendarDays className="w-4 h-4 text-amber-400" />
                     <input
                       type="date"
                       value={checkOutDate}
@@ -466,7 +466,7 @@ export default function OfferDetailsClient({ item }) {
                 <div className="col-span-2 flex items-center justify-between pt-2 border-t border-slate-800">
                   <span className="text-slate-300">Guests and rooms</span>
                   <span className="inline-flex items-center gap-1 text-slate-100">
-                    <Users className="w-4 h-4 text-emerald-300" />
+                    <Users className="w-4 h-4 text-amber-400" />
                     <span>
                       {rooms} room{rooms > 1 ? "s" : ""}, {guests} guest
                       {guests > 1 ? "s" : ""}
@@ -480,11 +480,11 @@ export default function OfferDetailsClient({ item }) {
                   <label className="text-sm font-medium text-slate-100">
                     Room type
                   </label>
-                  <select
-                    value={roomType}
-                    onChange={(e) => setRoomType(e.target.value)}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-400"
-                  >
+                    <select
+                      value={roomType}
+                      onChange={(e) => setRoomType(e.target.value)}
+                      className="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-amber-400"
+                    >
                     <option>Standard room</option>
                     <option>Deluxe room</option>
                     <option>Suite</option>
@@ -507,7 +507,7 @@ export default function OfferDetailsClient({ item }) {
                           Math.max(1, parseInt(e.target.value || "1", 10))
                         )
                       }
-                      className="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-400"
+                      className="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-amber-400"
                     />
                   </div>
                   <div className="space-y-2">
@@ -523,7 +523,7 @@ export default function OfferDetailsClient({ item }) {
                           Math.max(1, parseInt(e.target.value || "1", 10))
                         )
                       }
-                      className="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-400"
+                      className="w-full rounded-lg border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-amber-400"
                     />
                   </div>
                 </div>
@@ -540,7 +540,7 @@ export default function OfferDetailsClient({ item }) {
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-300" />
+                    <CheckCircle className="w-4 h-4 text-amber-400" />
                     <span>
                       {typeof item.stock === "number" && item.stock > 0
                         ? `${item.stock} room${
@@ -550,21 +550,21 @@ export default function OfferDetailsClient({ item }) {
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-300" />
+                    <CheckCircle className="w-4 h-4 text-amber-400" />
                     <span>
                       {rooms} room{rooms > 1 ? "s" : ""} for {guests} guest
                       {guests > 1 ? "s" : ""}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-300" />
+                    <CheckCircle className="w-4 h-4 text-amber-400" />
                     <span>
                       {nights} night{nights > 1 ? "s" : ""} stay selected
                     </span>
                   </div>
                   {item.availability !== false && (
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-300" />
+                      <CheckCircle className="w-4 h-4 text-amber-400" />
                       <span>Instant confirmation after booking</span>
                     </div>
                   )}
@@ -584,7 +584,7 @@ export default function OfferDetailsClient({ item }) {
                     {rooms > 1 ? "s" : ""}
                   </span>
                   <motion.span
-                    className="font-semibold text-emerald-300"
+                    className="font-semibold text-amber-400"
                     key={totalPrice}
                     initial={{ scale: 1.05, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -599,16 +599,16 @@ export default function OfferDetailsClient({ item }) {
                 </p>
               </motion.div>
 
-              <div className="space-y-2">
-                <button
-                  type="button"
-                  onClick={openBooking}
-                  className="w-full rounded-lg bg-emerald-500 text-slate-950 text-sm font-semibold py-3 shadow-lg shadow-emerald-500/25 hover:bg-emerald-400 transition-colors"
-                  whileHover={{ y: -1, scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Book now
-                </button>
+                <div className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={openBooking}
+                    className="w-full rounded-lg bg-amber-500 text-slate-950 text-sm font-semibold py-3 shadow-lg shadow-amber-500/25 hover:bg-amber-400 transition-colors"
+                    whileHover={{ y: -1, scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Book now
+                  </button>
                 <p className="text-xs text-slate-400">
                   You will confirm guest details and payment information on the
                   next step.
