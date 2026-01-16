@@ -2,6 +2,12 @@ import { getHotelData } from "@/actions/server/getData";
 import NewOffer from "@/componets/offer/NewOffer";
 import React from "react";
 
+export const metadata = {
+  title: "Hotel offers and deals",
+  description:
+    "Browse limited-time hotel offers, discounts, and curated stays to match your next trip.",
+};
+
 const Offerspage = async () => {
   const data = await getHotelData();
   console.log("This is Da", data);

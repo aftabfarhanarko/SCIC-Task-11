@@ -21,6 +21,10 @@ export const singleData = async (id) => {
     _id: new ObjectId(id),
   });
 
+  if (!result) {
+    return null;
+  }
+
   return { ...result, _id: result._id.toString() };
 };
 
