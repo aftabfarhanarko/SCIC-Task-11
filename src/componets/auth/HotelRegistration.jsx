@@ -25,7 +25,7 @@ export default function HotelRegistration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Registration Data:", formData);
+    // console.log("Registration Data:", formData);
     alert("Registration submitted! Check console for details.");
   };
 

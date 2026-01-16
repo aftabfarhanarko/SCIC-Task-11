@@ -36,7 +36,7 @@ export const authOptions = {
         if (!isValid) {
           throw new Error("Incorrect password");
         }
-        console.log("Full User Data", user);
+        // console.log("Full User Data", user);
 
         return {
           id: user._id.toString(),
@@ -118,7 +118,7 @@ export const authOptions = {
     },
 
     async session({ session, token }) {
-      console.log("Sessionn Tokenns", token);
+      // console.log("Sessionn Tokenns", token);
 
       if (token) {
         session.user.id = token.id;

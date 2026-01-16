@@ -15,7 +15,7 @@ export const getHotelData = async () => {
 };
 
 export const singleData = async (id) => {
-  console.log(id);
+  // console.log(id);
 
   const result = await dbConnect(collections.HOTEL).findOne({
     _id: new ObjectId(id),
@@ -38,7 +38,7 @@ export const orderData = async (data) => {
 
 export const mybookingData = async () => {
   const users = await getServerSession(authOptions);
-  console.log("GHet Tokes", users?.user?.email);
+  // console.log("GHet Tokes", users?.user?.email);
 
   const result = await dbConnect(collections.ORDER)
     .find({ customeremail: users?.user?.email })

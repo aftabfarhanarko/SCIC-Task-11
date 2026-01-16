@@ -23,7 +23,7 @@ const SetContactFrom = () => {
       subject: data.subject,
       sendTime: new Date().toISOString(),
     };
-    console.log("Contact form submitted:", savedData);
+    // console.log("Contact form submitted:", savedData);
     const result = await contactData(savedData);
     if (result.insertedId) {
       toast.success("Thank you for reaching out. We will contact you soon.");

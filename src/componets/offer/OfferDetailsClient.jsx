@@ -81,7 +81,7 @@ export default function OfferDetailsClient({ item }) {
   };
 
   const onSubmitBooking = async (data) => {
-    console.log("This is Data Form", data);
+    // console.log("This is Data Form", data);
     const savedBookData = {
       checkIn: data.checkIn,
       checkOut: data.checkOut,

@@ -25,7 +25,7 @@ const RegisterContext = () => {
   const onSubmit = async (data) => {
     const image = data.photo[0];
     const photo = await uploadToImgBB(image);
-    console.log("Image Data:", photo, photo.url);
+    // console.log("Image Data:", photo, photo.url);
 
     try {
       // Call register API
@@ -47,7 +47,7 @@ const RegisterContext = () => {
         photo: photo.url,
       };
       const resUser = await postUser(users);
-      console.log("Get User Post Insert id", resUser);
+      // console.log("Get User Post Insert id", resUser);
       if (resUser.insertedId) {
         toast.success("User Created Successfully");
       }
@@ -70,7 +70,7 @@ const RegisterContext = () => {
 
   const handleGoogleLogin = () => {
     signIn("google", { callbackUrl: callback }).then((res) => {
-      console.log("This is google ", res);
+      // console.log("This is google ", res);
     });
   };
 

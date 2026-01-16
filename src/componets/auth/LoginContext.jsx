@@ -10,7 +10,7 @@ const LoginContext = () => {
   const router = useRouter();
   const callback = params.get("callbackUrl") || "/";
   const [show, setShow] = useState(false);
-  console.log(params, router, callback);
+  // console.log(params, router, callback);
 
   const {
     register,

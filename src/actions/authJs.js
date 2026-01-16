@@ -3,7 +3,7 @@
 import bcrypt from "bcryptjs";
 import { collections, dbConnect } from "@/lib/mongoDbcoect";
 export const postUser = async (payload) => {
-  console.log(payload);
+  // console.log(payload);
   const { name, email, password, photo } = payload;
   //   console.log({ name, email, password, photo });
 
@@ -33,7 +33,7 @@ export const postUser = async (payload) => {
   };
 
   const result = await dbConnect(collections.USER).insertOne(users);
-  console.log(result);
+  // console.log(result);
 
   if (result.acknowledged) {
     return {
