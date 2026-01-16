@@ -25,11 +25,12 @@ const Navbar = () => {
     { name: "Accommodations", href: "/room" },
     { name: "Dining", href: "/feedback" },
     { name: "Experiences", href: "/experiences" },
+    { name: "My Booking", href: "/my-booking" },
   ];
 
   return (
     <>
-      <div className="hidden md:block bg-gradient-to-r from-emerald-500 via-emerald-400 to-amber-400 text-slate-950 text-[10px] tracking-[0.25em] uppercase">
+      {/* <div className="hidden md:block bg-gradient-to-r from-emerald-500 via-emerald-400 to-amber-400 text-slate-950 text-[10px] tracking-[0.25em] uppercase">
         <div className="max-w-10/12 mx-auto flex items-center justify-between px-4 py-2">
           <span>New seasonal offers now live</span>
           <Link
@@ -39,7 +40,7 @@ const Navbar = () => {
             View offers
           </Link>
         </div>
-      </div>
+      </div> */}
 
       <header
         className={`fixed w-full z-50 py-5 transition-all duration-300 ${
