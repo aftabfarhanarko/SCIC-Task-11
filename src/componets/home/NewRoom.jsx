@@ -46,7 +46,7 @@ const NewRoom = () => {
           <div>
             <div className="mb-8">
               <h3 className="text-sm tracking-[0.35em] uppercase text-amber-500">
-                Blog & Travel Tips
+                News From Us
               </h3>
               <div className="mt-1 h-px w-12 bg-amber-500"></div>
             </div>
@@ -77,7 +77,7 @@ const NewRoom = () => {
                   className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
                 >
                   <span className="underline underline-offset-4">
-                    Read All Articles
+                    Read All News
                   </span>
                   <span>→</span>
                 </Link>

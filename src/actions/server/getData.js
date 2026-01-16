@@ -1,7 +1,9 @@
 "use server";
 
+import { authOptions } from "@/lib/authOptions";
 import { collections, dbConnect } from "@/lib/mongoDbcoect";
 import { ObjectId } from "mongodb";
+import { getServerSession } from "next-auth";
 
 export const getHotelData = async () => {
   const result = await dbConnect(collections.HOTEL).find().toArray();
@@ -19,14 +21,26 @@ export const singleData = async (id) => {
     _id: new ObjectId(id),
   });
 
-  return {...result, _id:result._id.toString()};
+  return { ...result, _id: result._id.toString() };
 };
-
 
 // Order Customer Data
 
-export const  orderData = async (data) => {
+export const orderData = async (data) => {
   const result = await dbConnect(collections.ORDER).insertOne(data);
-  return {...result, insertedId:result.insertedId.toString()};
+  return { ...result, insertedId: result.insertedId.toString() };
   // return  result;
-}
+};
+
+export const mybookingData = async () => {
+  const users = await getServerSession(authOptions);
+  console.log("GHet Tokes", users?.user?.email);
+
+  const result = await dbConnect(collections.ORDER)
+    .find({ customeremail: users?.user?.email })
+    .toArray();
+  return result.map((item) => ({
+    ...item,
+    _id: item._id.toString(),
+  }));
+};
