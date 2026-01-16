@@ -57,3 +57,9 @@ export const deleteBooking = async (id) => {
   });
   return { ...result, deletedId: id };
 };
+
+
+export const contactData =async  (data) => {
+  const result = await dbConnect(collections.CONTACT).insertOne(data);
+   return {...result, insertedId:result.insertedId.toString()}
+}

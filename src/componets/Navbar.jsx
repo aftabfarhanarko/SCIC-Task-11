@@ -25,6 +25,7 @@ const Navbar = () => {
     { name: "About", href: "/room" },
     { name: "Dining", href: "/feedback" },
     { name: "Experiences", href: "/experiences" },
+    { name: "Contact", href: "/contact" },
     { name: "My Booking", href: "/my-booking" },
   ];
 
